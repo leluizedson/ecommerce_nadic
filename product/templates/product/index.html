@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if latest_product_list %}
+    <ul>
+    {% for product in latest_product_list %}
+        <li><a href="{% url 'product:detail' product.id %}">{{ product.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No products are available.</p>
+{% endif %}
+</body>
+</html>
