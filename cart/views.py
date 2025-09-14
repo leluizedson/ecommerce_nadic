@@ -22,7 +22,7 @@ def add_to_cart(request, product_id):
     return redirect('cart_view')
 
 @login_required(login_url='register')
-def delete_from_cart(request, item_id):
-    item = get_object_or_404(CartItem, id=item_id)
+def delete_from_cart(request, product_id):
+    item = get_object_or_404(CartItem, id=product_id)
     item.delete()
     return redirect('cart_view')
