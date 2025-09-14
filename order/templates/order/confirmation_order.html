@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmate Order</title>
+</head>
+<body>
+    <h1>Order #{{ order.id }} Confirmed</h1>
+    <p>Thank you for your purchase, {{ order.user.username }}!</p>
+    <ul>
+        {% for item in order.items.all %}
+            <li>{{ item.product.name }} x {{ item.quantity }} = ${{ item.total_price }}</li>
+        {% endfor %}
+    </ul>
+    <p>Total Paid: ${{ order.total }}</p>
+    <a href="{% url 'index' %}">Back to Home</a>
+</body>
+</html>
