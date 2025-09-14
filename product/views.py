@@ -8,6 +8,6 @@ def index(request):
         }
     return render(request, 'product/index.html', context)
 
-def detail(request, product_id):
+def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
-    return render(request, 'product/detail.html', {'product': product})
+    return render(request, 'product/product_detail.html', {'product': product})
