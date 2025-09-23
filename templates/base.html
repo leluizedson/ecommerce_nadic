@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles.css">
+    <title>E-Commerce</title>
+</head>
+<body>
+    <header>
+        <nav>
+            {% if user.is_authenticated %}
+                <div>
+                    <H2>Shopzone</H2>
+                    <a href="{% url 'index'%}"> Home </a>
+                    <a href="{% url 'profile_view' %}"> Customer area</a>
+                    <a href="{% url 'logout' %}"> Logout</a>
+                    <a href="{% url 'cart_view' %}"> Cart </a>
+                </div>
+                
+            {% else %}  
+                <div>
+                    <H2>Shopzone</H2>  
+                    <a href="{% url 'index'%}"> Home </a>
+                    <a href="{% url 'login' %}"> Login </a>
+                    <a href="{% url 'register' %}"> Register </a>
+                    <a href="{% url 'cart_view' %}"> Cart </a>
+                </div>
+            {% endif %}
+
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>copyright © 2025 all rights reserved</p>
+    </footer>
+
+</body>
+</html>
