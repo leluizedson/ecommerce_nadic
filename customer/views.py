@@ -49,7 +49,7 @@ def profile_view(request):
 @login_required(login_url='customer/register/')
 def profile_edit(request):
     if request.method == 'POST':
-        u_form = CustomerUpdateForm(request.POST, instance=request.user)
+        u_form = CustomerUpdateForm(request.POST, request.FILES, instance=request.user)
         if u_form.is_valid():
             u_form.save()
             return redirect('profile_view')
