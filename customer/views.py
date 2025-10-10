@@ -7,7 +7,7 @@ from .forms import CustomerCreationForm, LoginForm, CustomerUpdateForm
 
 def register(request):
     if request.method == 'POST':
-        form = CustomerCreationForm(request.POST)
+        form = CustomerCreationForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
             login(request, user)

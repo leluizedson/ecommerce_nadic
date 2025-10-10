@@ -3,10 +3,12 @@ from .models import CustomerModel
 from django.contrib.auth.forms import  UserCreationForm, AuthenticationForm
 
 class CustomerCreationForm(UserCreationForm):
+    foto_perfil = forms.ImageField(required=False)
+
     class Meta:
         model = CustomerModel
         fields = [
-            'username', 'email', 'cpf', 'nome_rua', 'numero_residencia', 'nome_bairro','nome_cidade', 'telefone', 'password1', 'password2'
+            'username', 'email', 'cpf', 'nome_rua', 'numero_residencia', 'nome_bairro','nome_cidade', 'telefone', 'foto_perfil', 'password1', 'password2'
         ]
 
         widgets = {
