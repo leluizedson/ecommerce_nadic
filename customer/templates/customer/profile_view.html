@@ -6,8 +6,23 @@
 </head>
 <body>
     <h1>My Account</h1>
+
+    {% if request.user.foto_perfil %}
+        <img src="{{ request.user.foto_perfil.url }}" alt="Foto de Perfil" width="150" height="150">
+    {% else %}
+        <p>Sem foto de perfil.</p>
+    {% endif %}
+
     <p>Username: {{ request.user.username }}</p>
     <p>Email: {{ request.user.email }}</p>
+    <p>CPF: {{ request.user.cpf }}</p>
+    <p>Rua: {{ request.user.nome_rua }}</p>
+    <p>N Residencia: {{ request.user.numero_residencia }}</p>
+    <p>Bairro: {{ request.user.nome_bairro }}</p>
+    <p>Cidade: {{ request.user.nome_cidade }}</p>
+    <p>Telefone: {{ request.user.telefone }}</p>
+
+
     <a href="{% url 'profile_edit' %}">Edit Profile</a>
 </body>
 </html>
