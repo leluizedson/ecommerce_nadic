@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmate Order</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content%}
+<div>
     <h1>Order #{{ order.id }} Confirmed</h1>
     <p>Thank you for your purchase, {{ order.user.username }}!</p>
     <ul>
@@ -15,5 +17,5 @@
     </ul>
     <p>Total Paid: ${{ order.total }}</p>
     <a href="{% url 'index' %}">Back to Home</a>
-</body>
-</html>
+</div>
+{% endblock %}
