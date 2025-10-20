@@ -5,10 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    {% block extra_css %}{% endblock %}
+
 
     <title>E-Commerce</title>
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
     <header>
@@ -17,8 +19,15 @@
                 <div>
                     <H2>Shopzone</H2>
                     <a href="{% url 'index'%}"> Home </a>
-                    <form method="get">
+                    <form method="get" action="{% url 'index' %}">
                         <input type="text" name="q" placeholder="Buscar produto..." value="{{ query }}">
+                        
+                        <label for="min_price">Preço mínimo:</label>
+                        <input type="number" name="min_price" step="0.01" value="{{ min_price|default:'' }}">
+                        
+                        <label for="max_price">Preço máximo:</label>
+                        <input type="number" name="max_price" step="0.01" value="{{ max_price|default:'' }}">
+                        
                         <button type="submit">Buscar</button>
                     </form>
                     <a href="{% url 'profile_view' %}"> Customer area</a>
@@ -30,8 +39,15 @@
                 <div>
                     <H2>Shopzone</H2>  
                     <a href="{% url 'index'%}"> Home </a>
-                    <form method="get">
+                    <form method="get" action="{% url 'index' %}">
                         <input type="text" name="q" placeholder="Buscar produto..." value="{{ query }}">
+                        
+                        <label for="min_price">Preço mínimo:</label>
+                        <input type="number" name="min_price" step="0.01" value="{{ min_price|default:'' }}">
+                        
+                        <label for="max_price">Preço máximo:</label>
+                        <input type="number" name="max_price" step="0.01" value="{{ max_price|default:'' }}">
+                        
                         <button type="submit">Buscar</button>
                     </form>
                     <a href="{% url 'login' %}"> Login </a>
