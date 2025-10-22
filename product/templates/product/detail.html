@@ -10,7 +10,9 @@
 
 {% block content%}
 <div>
-
+    {% for image in product.images.all %}
+      <img src="{{ image.image.url }}" alt="{{ product.name }}">
+    {% endfor %}
     <h1>{{ product.name }}</h1>
     <ul>
         <p> Name - {{ product.name}}</p>
