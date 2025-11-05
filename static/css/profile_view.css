@@ -1,3 +1,88 @@
-h1 {
-    color :blueviolet
+/* --- PROFILE VIEW PAGE --- */
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    background-color: #f7f9fb;
+}
+
+/* Container principal */
+.profile-container {
+    max-width: 600px;
+    margin: 3rem auto;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* Título */
+.profile-container h1 {
+    font-size: 1.8rem;
+    color: #222;
+    margin-bottom: 1.5rem;
+}
+
+/* Foto de perfil */
+.profile-container img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #0aa9ee;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.profile-container img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 4px rgba(10, 169, 238, 0.2);
+}
+
+/* Dados do usuário */
+.profile-container p {
+    margin: 0.4rem 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.profile-container p strong {
+    color: #000;
+}
+
+/* Quando não há foto */
+.profile-container p:first-of-type {
+    font-style: italic;
+    color: #777;
+}
+
+/* Botão Editar */
+.profile-container a {
+    display: inline-block;
+    margin-top: 1.5rem;
+    background: linear-gradient(135deg, #0aa9ee, #098ad2);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.profile-container a:hover {
+    background: linear-gradient(135deg, #098ad2, #0779bb);
+    transform: translateY(-1px);
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .profile-container {
+        width: 90%;
+        padding: 1.5rem;
+    }
 }

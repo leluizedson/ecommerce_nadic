@@ -3,19 +3,22 @@
 {% load static %}
 
 {% block extra_css %}
-  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" href="{% static 'css/confirmation_order.css' %}">
 {% endblock %}
 
-{% block content%}
-<div>
+{% block content %}
+<div class="confirmation-container">
     <h1>Order #{{ order.id }} Confirmed</h1>
     <p>Thank you for your purchase, {{ order.user.username }}!</p>
+
     <ul>
         {% for item in order.items.all %}
-            <li>{{ item.product.name }} x {{ item.quantity }} = ${{ item.total_price }}</li>
+            <li>{{ item.product.name }} × {{ item.quantity }} = ${{ item.total_price }}</li>
         {% endfor %}
     </ul>
-    <p>Total Paid: ${{ order.total }}</p>
+
+    <p class="total-paid">Total Paid: ${{ order.total }}</p>
+
     <a href="{% url 'index' %}">Back to Home</a>
 </div>
 {% endblock %}

@@ -1,0 +1,99 @@
+/* register.css */
+
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    background-color: #f5f6fa;
+}
+
+/* Container principal */
+.register-container {
+    max-width: 450px;
+    margin: 3rem auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+.register-container h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+/* Formulário */
+.register-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.register-container form p {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/* Inputs */
+.register-container input[type="text"],
+.register-container input[type="password"],
+.register-container input[type="email"],
+.register-container input[type="file"],
+.register-container select {
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.register-container input:focus,
+.register-container select:focus {
+    border-color: #0aa9ee;
+}
+
+/* Botão */
+.register-container button {
+    background-color: #0aa9ee;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.register-container button:hover {
+    background-color: #0989c6;
+}
+
+/* Link para login */
+.register-container p {
+    text-align: center;
+    margin-top: 1rem;
+    color: #555;
+}
+
+.register-container p a {
+    color: #0aa9ee;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-container p a:hover {
+    text-decoration: underline;
+}
+
+/* Responsivo */
+@media (max-width: 500px) {
+    .register-container {
+        width: 90%;
+        padding: 1.5rem;
+    }
+}

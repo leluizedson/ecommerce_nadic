@@ -1,0 +1,77 @@
+/* === Checkout Container === */
+.checkout-container {
+    max-width: 700px;
+    margin: 3rem auto;
+    background-color: #ffffff;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.checkout-container h1 {
+    text-align: center;
+    color: #222;
+    margin-bottom: 2rem;
+}
+
+/* === Itens do Pedido === */
+.checkout-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.checkout-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-item h3 {
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.checkout-item p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* === Total === */
+.checkout-total {
+    text-align: right;
+    margin-top: 2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #0aa9ee;
+}
+
+/* === Botão de Finalizar === */
+.place-order-btn {
+    display: block;
+    width: 100%;
+    margin-top: 1.8rem;
+    background-color: #0aa9ee;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    padding: 0.9rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.place-order-btn:hover {
+    background-color: #098fcc;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(10, 169, 238, 0.3);
+}
+
+.place-order-btn:active {
+    transform: scale(0.98);
+}
