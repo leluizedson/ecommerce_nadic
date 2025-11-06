@@ -1,8 +1,4 @@
-/* --- PROFILE VIEW PAGE --- */
-body {
-    font-family: "Poppins", Arial, sans-serif;
-    background-color: #f7f9fb;
-}
+
 
 /* Container principal */
 .profile-container {
@@ -20,6 +16,46 @@ body {
     transform: translateY(-3px);
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
 }
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.tab-button {
+    background-color: #f5f7fa;
+    color: #333;
+    border: none;
+    padding: 0.7rem 1.4rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+    background-color: #e3f2fd;
+}
+
+.tab-button.active {
+    background-color: #0aa9ee;
+    color: #fff;
+    box-shadow: 0 3px 8px rgba(10, 169, 238, 0.3);
+}
+
+/* ===== CONTEÚDO DAS ABAS ===== */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
 
 /* Título */
 .profile-container h1 {
@@ -77,6 +113,176 @@ body {
 .profile-container a:hover {
     background: linear-gradient(135deg, #098ad2, #0779bb);
     transform: translateY(-1px);
+}
+
+
+
+
+
+#info p {
+    font-size: 1.05rem;
+    color: #555;
+    margin: 0.4rem 0;
+    text-align: center;
+}
+
+#info strong {
+    color: #0aa9ee;
+}
+
+/* ===== LISTA DE PEDIDOS ===== */
+#orders {
+    margin-top: 1rem;
+}
+
+#orders h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    color: #222;
+}
+
+.order-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 650px;
+}
+
+.order-list li {
+    background-color: #f9fafc;
+    border-left: 5px solid #0aa9ee;
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.8rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.order-list li:hover {
+    transform: translateY(-2px);
+    background-color: #eef9ff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.order-list li strong {
+    color: #0aa9ee;
+}
+
+/* ===== DETALHES DO PEDIDO ===== */
+.order-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: 0.5rem;
+}
+
+.order-status {
+    font-weight: 600;
+    text-transform: capitalize;
+    padding: 0.3rem 0.7rem;
+    border-radius: 5px;
+}
+
+/* Status por cor */
+.order-status.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.order-status.completed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.order-status.cancelled {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+
+/* ===== CONFIGURAÇÕES ===== */
+#settings {
+    text-align: center;
+}
+
+.settings-link {
+    display: inline-block;
+    margin: 0.5rem 0;
+    color: #0aa9ee;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.settings-link:hover {
+    color: #098fcc;
+}
+
+/* ===== BOTÃO DE EXCLUSÃO ===== */
+.delete-btn {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.4rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.delete-btn:hover {
+    background-color: #e63946;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(230, 57, 70, 0.3);
+}
+
+.password-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.password-form label {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.password-form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: border-color 0.2s ease;
+}
+
+.password-form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.save-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.save-btn:hover {
+  background: #0056b3;
+}
+
+.tab-button a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* Responsivo */

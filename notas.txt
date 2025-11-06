@@ -1,3 +1,2 @@
-ver index and base html and css
-corrigir grid
-ver frameworl
+ver TEXTOS padrão django
+implementação de numero pedidos em clientes ( a tabela de pedidos é universal, fazer ser por cliente )

@@ -1,32 +1,88 @@
-{% extends "base.html" %}
+    {% extends "base.html" %}
 
-{% load static %}
+    {% load static %}
 
-{% block extra_css %}
-  <link rel="stylesheet" href="{% static 'css/profile_view.css' %}">
-{% endblock %}
+    {% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/profile_view.css' %}">
+    {% endblock %}
 
-{% block content%}
-    <div class="profile-container">
-        <h1>My Account</h1>
-        
-        {% if request.user.foto_perfil %}
-            <img src="{{ request.user.foto_perfil.url }}" alt="Foto de Perfil" width="150" height="150">
-        {% else %}
-            <p>Sem foto de perfil.</p>
-        {% endif %}
-        
-        <p>Username: {{ request.user.username }}</p>
-        <p>Email: {{ request.user.email }}</p>
-        <p>CPF: {{ request.user.cpf }}</p>
-        <p>Rua: {{ request.user.nome_rua }}</p>
-        <p>N Residencia: {{ request.user.numero_residencia }}</p>
-        <p>Bairro: {{ request.user.nome_bairro }}</p>
-        <p>Cidade: {{ request.user.nome_cidade }}</p>
-        <p>Telefone: {{ request.user.telefone }}</p>
-        
-        
-        <a href="{% url 'profile_edit' %}">Edit Profile</a>
-    </div>
-{% endblock %}
+    {% block content%}
+        <div class="profile-container">
+            <h1>My Account</h1>
+            
+            <!-- Abas -->
+            <div class="tabs">
+                <button class="tab-button active" data-tab="info">Informações do Cliente</button>
+                <button class="tab-button" data-tab="orders">Pedidos Feitos</button>
+                <button class="tab-button" data-tab="settings">Configurações</button>
+            </div>
+
+            <!-- Aba: Informações -->
+            <div class="tab-content active" id="info">
+                {% if request.user.foto_perfil %}
+                <img src="{{ request.user.foto_perfil.url }}" alt="Foto de Perfil" class="profile-pic">
+                {% else %}
+                <p>Sem foto de perfil.</p>
+                {% endif %}
+
+                <p><strong>Usuário:</strong> {{ request.user.username }}</p>
+                <p><strong>Email:</strong> {{ request.user.email }}</p>
+                <p><strong>CPF:</strong> {{ request.user.cpf }}</p>
+                <p><strong>Rua:</strong> {{ request.user.nome_rua }}</p>
+                <p><strong>Número:</strong> {{ request.user.numero_residencia }}</p>
+                <p><strong>Bairro:</strong> {{ request.user.nome_bairro }}</p>
+                <p><strong>Cidade:</strong> {{ request.user.nome_cidade }}</p>
+                <p><strong>Telefone:</strong> {{ request.user.telefone }}</p>
+            </div>
+
+            <!-- Aba: Pedidos -->
+            <div class="tab-content" id="orders">
+                <h2>Meus Pedidos</h2>
+                {% if orders %}
+                    <ul class="order-list">
+                        {% for order in orders %}
+                        <li>
+                            <div class="order-header">
+                                <strong>Pedido #{{ order.id }}</strong>
+                            </div>
+                            <div class="order-meta">
+                                <span>{{ order.created_at|date:"d/m/Y" }}</span>
+                                <span class="order-status {{ order.status|lower }}">
+                                    {{ order.status }}
+                                </span>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p style="text-align: center; color: #555;">Você ainda não fez nenhum pedido.</p>
+                {% endif %}
+            </div>
+
+            <!-- Aba: Configurações -->
+            <div class="tab-content" id="settings">
+                <h2>Configurações da Conta</h2>
+                <a href="{% url 'profile_edit' %}" class="settings-link">Editar Perfil</a><br>
+                <a href="{% url 'password_change' %}" class="settings-link">Alterar Senha</a><br>
+                <form action="{% url 'delete_account' %}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir sua conta?');">
+                {% csrf_token %}
+                <button type="submit" class="delete-btn">Excluir Conta</button>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            const buttons = document.querySelectorAll(".tab-button");
+            const tabs = document.querySelectorAll(".tab-content");
+
+            buttons.forEach(btn => {
+                btn.addEventListener("click", () => {
+                buttons.forEach(b => b.classList.remove("active"));
+                tabs.forEach(t => t.classList.remove("active"));
+                btn.classList.add("active");
+                document.getElementById(btn.dataset.tab).classList.add("active");
+                });
+            });
+        </script>
+    {% endblock %}
 

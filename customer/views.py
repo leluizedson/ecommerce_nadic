@@ -1,8 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.views import PasswordChangeView
+from django.urls import reverse_lazy    
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import CustomerCreationForm, LoginForm, CustomerUpdateForm
+from order.models import Order
+
+class CustomerPasswordChangeView(PasswordChangeView):
+    template_name = 'customer/password_change.html'
+    success_url = reverse_lazy('index')
 
 
 def register(request):
@@ -44,7 +51,9 @@ def user_logout(request):
 
 @login_required(login_url='customer/register/')
 def profile_view(request):
-    return render(request, 'customer/profile_view.html')
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')
+    context = {'orders': orders}
+    return render(request, 'customer/profile_view.html', context)
 
 @login_required(login_url='customer/register/')
 def profile_edit(request):
@@ -56,3 +65,12 @@ def profile_edit(request):
     else:
         u_form = CustomerUpdateForm(instance=request.user)
     return render(request, 'customer/profile_edit.html', {'u_form': u_form })
+
+@login_required
+def delete_account(request):
+    if request.method == "POST":
+        user = request.user
+        user.delete()
+        messages.success(request, "Sua conta foi excluída com sucesso.")
+        return redirect('index')  # ou a URL que você quiser redirecionar após excluir
+    return redirect('profile_view')
