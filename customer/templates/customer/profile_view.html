@@ -43,7 +43,7 @@
                         {% for order in orders %}
                         <li>
                             <div class="order-header">
-                                <strong>Pedido #{{ order.id }}</strong>
+                                <strong>Pedido #{{ order.order_number }}</strong>
                             </div>
                             <div class="order-meta">
                                 <span>{{ order.created_at|date:"d/m/Y" }}</span>
