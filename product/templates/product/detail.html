@@ -16,12 +16,13 @@
         {% endfor %}
     </div>
 
-    <div class="product-info">
+    <div sclass="product-info">
         <h1>{{ product.name }}</h1>
-        <p><strong>Price:</strong> ${{ product.price }}</p>
-        <p><strong>Stock:</strong> {{ product.stock }}</p>
+        <p><strong>Preço:</strong> ${{ product.price }}</p>
+        <p><strong>Em estoque:</strong> {{ product.stock }}</p>
+        <p><strong>Descrição:</strong> {{ product.description }}</p>
 
-        <a href="{% url 'add_to_cart' product.id %}" class="add-to-cart-btn">Add to Cart</a>
+        <a href="{% url 'add_to_cart' product.id %}" class="add-to-cart-btn">Adicionar ao carrinho</a>
     </div>
 
 </div>
