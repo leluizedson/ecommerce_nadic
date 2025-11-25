@@ -8,24 +8,45 @@
 {% block content %}
 <div class="cart-page">
   <div class="cart-container">
-      <h1>Your Cart</h1>
-
-        {% for item in items %}
-            <div class="cart-item">
-                <div>
-                    <h2>{{ item.product.name }}</h2>
-                    <p>Quantity: {{ item.quantity }}</p>
-                    <p>Price: ${{ item.total_price }}</p>
-                </div>
-                <a href="{% url 'delete_from_cart' item.id %}" class="remove-btn">Remove</a>
-            </div>
-        {% endfor %}
-
-
-      <h3 class="cart-total">Total: ${{ total }}</h3>
+      <h1>Meu carrinho</h1>
 
       {% if items %}
-      <a href="{% url 'checkout' %}" class="checkout-btn">Proceed to Checkout</a>
+          {% for item in items %}
+              <div class="cart-item">
+                  <div>
+                      <h2>{{ item.product.name }}</h2>
+
+                      <!-- Botões de quantidade -->
+                      <div class="qtd-box">
+                          <a href="{% url 'decrease_quantity' item.id %}" class="btn-qtd">−</a>
+                          <span class="qtd">{{ item.quantity }}</span>
+                          <a href="{% url 'increase_quantity' item.id %}" class="btn-qtd">+</a>
+                      </div>
+
+                      <!-- Preço -->
+                      <p>Preço: R$ {{ item.total_price }}</p>
+
+                      <!-- Alerta de estoque -->
+                      {% if item.quantity > item.product.stock %}
+                          <p class="stock-alert">Estoque disponível: {{ item.product.stock }}</p>
+                      {% endif %}
+                  </div>
+
+                  <a href="{% url 'delete_from_cart' item.id %}" class="remove-btn">Excluir</a>
+              </div>
+          {% endfor %}
+      {% else %}
+          <p class="cart-empty">Seu carrinho está vazio.</p>
+      {% endif %}
+
+      <h3 class="cart-total">Total: R$ {{ total }}</h3>
+
+      {% if items %}
+          {% if out_of_stock %}
+              <button class="checkout-btn disabled" disabled>Estoque insuficiente</button>
+          {% else %}
+              <a href="{% url 'checkout' %}" class="checkout-btn">Prosseguir para pagamento</a>
+          {% endif %}
       {% endif %}
   </div>
 </div>

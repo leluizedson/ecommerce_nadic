@@ -8,8 +8,8 @@
 
 {% block content %}
 <div class="confirmation-container">
-    <h1>Order #{{ order.order_number }} Confirmed</h1>
-    <p>Thank you for your purchase, {{ order.user.username }}!</p>
+    <h1>Pedido #{{ order.order_number }} Confirmado!</h1>
+    <p>Obrigado pela sua compra, {{ order.user.username }}!</p>
 
     <ul>
         {% for item in order.items.all %}
@@ -17,8 +17,8 @@
         {% endfor %}
     </ul>
 
-    <p class="total-paid">Total Paid: ${{ order.total }}</p>
+    <p class="total-paid">Total pago: ${{ order.total }}</p>
 
-    <a href="{% url 'index' %}">Back to Home</a>
+    <a href="{% url 'index' %}">Voltar à tela inicial</a>
 </div>
 {% endblock %}

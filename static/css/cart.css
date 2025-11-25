@@ -1,4 +1,4 @@
-/* --- CART PAGE --- */
+/* --- ESCOPAR TUDO NO .cart-page PARA NÃO AFETAR OUTRAS PÁGINAS --- */
 
 .cart-page {
     font-family: "Poppins", Arial, sans-serif;
@@ -11,7 +11,7 @@
 }
 
 /* Container principal */
-.cart-container {
+.cart-page .cart-container {
     width: 100%;
     max-width: 800px;
     background-color: #fff;
@@ -21,15 +21,15 @@
 }
 
 /* Título */
-.cart-container h1 {
+.cart-page h1 {
     text-align: center;
     font-size: 2rem;
     color: #222;
     margin-bottom: 2rem;
 }
 
-/* Itens do carrinho */
-.cart-item {
+/* Itens */
+.cart-page .cart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,29 +37,76 @@
     padding: 1rem 0;
 }
 
-.cart-item h2 {
+.cart-page .cart-item h2 {
     font-size: 1.2rem;
     color: #333;
     margin-bottom: 0.4rem;
 }
 
-.cart-item p {
+.cart-page .cart-item p {
     margin: 0.3rem 0;
     color: #555;
     font-size: 0.95rem;
 }
 
-/* Link de remover */
-.cart-item a {
-
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
+/* Botões + e - */
+.cart-page .qtd-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0.5rem 0;
 }
 
+.cart-page .btn-qtd {
+    background-color: #0aa9ee;
+    padding: 6px 10px;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: 0.2s ease;
+    box-shadow: 0 3px 10px rgba(0, 153, 204, 0.3);
+}
+
+.cart-page .btn-qtd:hover {
+    background-color: #097bb1;
+    transform: translateY(-2px);
+}
+
+.cart-page .qtd {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222;
+}
+
+/* Aviso de estoque */
+.cart-page .stock-alert {
+    color: #d62828;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+/* Botão remover */
+.cart-page .remove-btn {
+    background-color: #f94144;
+    color: #fff;
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.25s ease;
+    box-shadow: 0 2px 6px rgba(249, 65, 68, 0.3);
+}
+
+.cart-page .remove-btn:hover {
+    background-color: #d62828;
+    transform: translateY(-2px);
+}
 
 /* Total */
-.cart-total {
+.cart-page .cart-total {
     text-align: right;
     margin-top: 2rem;
     font-size: 1.3rem;
@@ -67,41 +114,12 @@
     color: #222;
 }
 
-/* --- Botão de remover --- */
-.remove-btn {
-    display: inline-block;
-    background-color: #f94144;
-    color: #fff;
-    padding: 0.45rem 0.9rem;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    box-shadow: 0 2px 6px rgba(249, 65, 68, 0.3);
-}
-
-.remove-btn:hover {
-    background-color: #d62828;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(249, 65, 68, 0.4);
-}
-
-.remove-btn:active {
-    transform: scale(0.97);
-    background-color: #b71c1c;
-}
-
-
-/* Botão de checkout */
-.checkout-btn {
+/* Botão checkout */
+.cart-page .checkout-btn {
     display: block;
     width: 100%;
     background: linear-gradient(135deg, #0aa9ee, #098ad2);
-    color: #fff;
-    border: none;
+    color: #fff !important;
     border-radius: 12px;
     padding: 0.9rem;
     font-size: 1rem;
@@ -110,15 +128,22 @@
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 1.5rem;
+    text-decoration: none;
 }
 
-.checkout-btn:hover {
+.cart-page .checkout-btn:hover {
     background: linear-gradient(135deg, #098ad2, #0779bb);
     transform: translateY(-2px);
 }
 
-/* Mensagem de carrinho vazio */
-.cart-empty {
+.cart-page .checkout-btn.disabled {
+    background: #ccc !important;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Carrinho vazio */
+.cart-page .cart-empty {
     text-align: center;
     color: #666;
     font-size: 1.1rem;
@@ -127,20 +152,16 @@
 
 /* Responsivo */
 @media (max-width: 600px) {
-    .cart-container {
+    .cart-page .cart-container {
         padding: 1.5rem;
     }
 
-    .cart-item {
+    .cart-page .cart-item {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    .cart-item h2 {
-        margin-bottom: 0.6rem;
-    }
-
-    .cart-total {
+    .cart-page .cart-total {
         text-align: center;
     }
 }

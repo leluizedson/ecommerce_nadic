@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from cart.models import Cart, CartItem
 from .models import Order, OrderItem
+from django.contrib import messages
 
 @login_required(login_url='register')
 def checkout(request):
@@ -12,6 +13,12 @@ def checkout(request):
 
     total = sum(item.total_price() for item in items)
 
+
+    for item in items:
+        if item.quantity > item.product.stock:
+            messages.error(request, f"Estoque insuficiente para {item.product.name}.")
+            return redirect('cart_view')
+        
     if request.method == 'POST':
         order = Order.objects.create(user=request.user, total=total)
 
@@ -22,6 +29,15 @@ def checkout(request):
                 quantity = item.quantity,
                 price = item.product.price
             )
+            product = item.product
+            product.stock -= item.quantity
+
+            # Nunca deixa estoque negativo
+            if product.stock < 0:
+                product.stock = 0
+
+            product.save()
+
         items.delete()
         return redirect('order_confirmation', order_id=order.id)
     return render ( request, 'order/checkout.html', {'items': items, 'total': total})

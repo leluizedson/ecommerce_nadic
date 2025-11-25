@@ -13,7 +13,7 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit">Register</button>
+        <button type="submit">Cadastrar-se</button>
     </form>
     <p> Já possui uma conta? <a href="{% url 'login' %}"> Clique aqui </a></p>
 </div>
