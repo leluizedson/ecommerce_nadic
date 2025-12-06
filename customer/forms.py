@@ -30,7 +30,7 @@ class CustomerCreationForm(UserCreationForm):
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control','placeholder': 'Nome de usuário' }))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control','placeholder': 'Senha'}))
+    password = forms.CharField(label="Senha", widget=forms.PasswordInput(attrs={'class': 'form-control','placeholder': 'Senha'}))
 
 class CustomerUpdateForm(forms.ModelForm):
     """Formulário para editar perfil do usuário"""

@@ -1,11 +1,8 @@
-/* register.css */
-
 body {
     font-family: "Poppins", Arial, sans-serif;
     background-color: #f5f6fa;
 }
 
-/* Container principal */
 .register-container {
     max-width: 450px;
     margin: 3rem auto;
@@ -15,14 +12,12 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Título */
 .register-container h1 {
     text-align: center;
     margin-bottom: 1.5rem;
     color: #333;
 }
 
-/* Formulário */
 .register-container form {
     display: flex;
     flex-direction: column;
@@ -37,7 +32,6 @@ body {
     color: #444;
 }
 
-/* Inputs */
 .register-container input[type="text"],
 .register-container input[type="password"],
 .register-container input[type="email"],
@@ -56,7 +50,6 @@ body {
     border-color: #0aa9ee;
 }
 
-/* Botão */
 .register-container button {
     background-color: #0aa9ee;
     color: #fff;
@@ -73,7 +66,6 @@ body {
     background-color: #0989c6;
 }
 
-/* Link para login */
 .register-container p {
     text-align: center;
     margin-top: 1rem;
@@ -88,12 +80,4 @@ body {
 
 .register-container p a:hover {
     text-decoration: underline;
-}
-
-/* Responsivo */
-@media (max-width: 500px) {
-    .register-container {
-        width: 90%;
-        padding: 1.5rem;
-    }
 }
